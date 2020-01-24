@@ -1,0 +1,9 @@
+
+[Bb]in/
+[Oo]bj/
+
+.exercism
+.solution.json
+
+.vscode
+exercism.io.code-workspace
