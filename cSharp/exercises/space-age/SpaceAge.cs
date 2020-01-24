@@ -1,10 +1,22 @@
 using System;
 
+static class RelativeOrbitalPeriods
+{
+  public const int Earth = 1;
+  public const double Mercury = 0.2408467;
+  public const double Venus = 0.61519726;
+  public const double Mars = 1.8808158;
+  public const double Jupiter = 11.862615;
+  public const double Saturn = 29.447498;
+  public const double Uranus = 84.016846;
+  public const double Neptune = 164.79132;
+}
+
 public class SpaceAge
 {
 
-  long AgeInSeconds;
-  double EarthYearInSeconds = 31557600;
+  private long AgeInSeconds;
+  private readonly double EarthYearInSeconds = 31557600;
 
   public SpaceAge(long seconds)
   {
@@ -13,41 +25,46 @@ public class SpaceAge
 
   public double OnEarth()
   {
-    return this.AgeInSeconds / this.EarthYearInSeconds;
+    return this.GetAge(RelativeOrbitalPeriods.Earth);
+  }
+
+  private double GetAge(double orbitalPeriod)
+  {
+    return this.AgeInSeconds / this.EarthYearInSeconds / orbitalPeriod;
   }
 
   public double OnMercury()
   {
-    return this.OnEarth() / 0.2408467;
+    return this.GetAge(RelativeOrbitalPeriods.Mercury);
   }
 
   public double OnVenus()
   {
-    return this.OnEarth() / 0.61519726;
+    return this.GetAge(RelativeOrbitalPeriods.Venus);
   }
 
   public double OnMars()
   {
-    return this.OnEarth() / 1.8808158;
+    return this.GetAge(RelativeOrbitalPeriods.Mars);
   }
 
   public double OnJupiter()
   {
-    return this.OnEarth() / 11.862615;
+    return this.GetAge(RelativeOrbitalPeriods.Jupiter);
   }
 
   public double OnSaturn()
   {
-    return this.OnEarth() / 29.447498;
+    return this.GetAge(RelativeOrbitalPeriods.Saturn);
   }
 
   public double OnUranus()
   {
-    return this.OnEarth() / 84.016846;
+    return this.GetAge(RelativeOrbitalPeriods.Uranus);
   }
 
   public double OnNeptune()
   {
-    return this.OnEarth() / 164.79132;
+    return this.GetAge(RelativeOrbitalPeriods.Neptune);
   }
 }
