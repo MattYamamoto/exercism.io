@@ -5,5 +5,7 @@
 .exercism
 .solution.json
 
+.editorconfig
+
 .vscode
 exercism.io.code-workspace
