@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class Pangram
 {
@@ -9,17 +10,8 @@ public static class Pangram
       return false;
     }
 
-    char[] alphabet = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-    string parsedInput = input.ToLower();
+    const string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    foreach (char c in alphabet)
-    {
-      if (parsedInput.IndexOf(c) < 0)
-      {
-        return false;
-      }
-    }
-
-    return true;
+    return alphabet.All(input.ToLower().Contains);
   }
 }
