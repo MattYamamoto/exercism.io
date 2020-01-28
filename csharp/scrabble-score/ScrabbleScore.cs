@@ -4,9 +4,7 @@ using System.Linq;
 
 public static class ScrabbleScore
 {
-  public static int Score(string input)
-  {
-    IDictionary<string, int> dict = new Dictionary<string, int>() {
+  private static readonly IDictionary<string, int> dict = new Dictionary<string, int>() {
         {"A", 1}
       , {"B", 3}
       , {"C", 3}
@@ -35,8 +33,9 @@ public static class ScrabbleScore
       , {"Z", 10}
     };
 
-    int score = input.ToUpper().Aggregate(0, (score, c) => score + dict[c.ToString()]);
-
+  public static int Score(string input)
+  {
+    int score = input.ToUpper().Where(char.IsLetter).Sum(c => dict[c.ToString()]);
     return score;
   }
 }
