@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Linq;
 
 public static class ArmstrongNumbers
 {
   public static bool IsArmstrongNumber(int number)
   {
-    throw new NotImplementedException("You need to implement this function.");
+    string num = number.ToString();
+    double digitCount = num.Length;
+
+    var possibleArmstrong = num.Aggregate(0.0, (sum, c) => sum + Math.Pow(double.Parse(c.ToString()), digitCount));
+
+    return possibleArmstrong == number;
   }
 }
