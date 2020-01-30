@@ -8,7 +8,7 @@ public static class ArmstrongNumbers
     string num = number.ToString();
     double digitCount = num.Length;
 
-    var possibleArmstrong = num.Aggregate(0.0, (sum, c) => sum + Math.Pow(double.Parse(c.ToString()), digitCount));
+    var possibleArmstrong = num.Aggregate(0, (sum, c) => sum + (int)Math.Pow(double.Parse(c.ToString()), digitCount));
 
     return possibleArmstrong == number;
   }
