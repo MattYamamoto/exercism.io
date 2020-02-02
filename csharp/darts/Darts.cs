@@ -4,6 +4,12 @@ public static class Darts
 {
     public static int Score(double x, double y)
     {
-       throw new NotImplementedException("You need to implement this function");
+        double distanceFromCenter = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+
+        return
+          distanceFromCenter <= 1 ? 10 :
+          distanceFromCenter <= 5 ? 5 :
+          distanceFromCenter <= 10 ? 1 :
+          0;
     }
 }
