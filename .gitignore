@@ -2,10 +2,5 @@
 [Bb]in/
 [Oo]bj/
 
-.exercism
-.solution.json
-
-.editorconfig
-
 .vscode
 exercism.io.code-workspace
