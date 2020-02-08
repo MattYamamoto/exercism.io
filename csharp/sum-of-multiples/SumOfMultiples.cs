@@ -15,19 +15,17 @@ public static class SumOfMultiples
 
     public static IEnumerable<int> allMultiples(int baseNumber, int max)
     {
-        int multiple = baseNumber;
         IList<int> multiples = new List<int>();
 
-        if (baseNumber == 0)
-        {
-            return multiples;
-        }
+        if (baseNumber == 0) return multiples;
 
-        while (multiple < max)
+        for (
+            int multiple = baseNumber;
+            multiple < max;
+            multiple += baseNumber
+        )
         {
             multiples.Add(multiple);
-
-            multiple += baseNumber;
         }
         return multiples;
     }
