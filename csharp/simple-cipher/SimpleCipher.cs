@@ -4,29 +4,72 @@ public class SimpleCipher
 {
     public SimpleCipher()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        this._key = RandomKey(100);
     }
 
     public SimpleCipher(string key)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        this._key = key;
     }
-    
-    public string Key 
+
+    private string _key;
+    public string Key
     {
         get
         {
-            throw new NotImplementedException("You need to implement this function.");
+            return this._key.ToLower();
         }
+    }
+
+    private string RandomKey(int keyLength)
+    {
+        Random random = new Random();
+
+        string key = "";
+        for (int i = 1; i <= keyLength; i++)
+        {
+            key += (char)('a' + (char)random.Next(0, 26));
+        }
+
+        return key;
     }
 
     public string Encode(string plaintext)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        string ciphertext = "";
+        int shift;
+
+        for (int i = 0; i < plaintext.Length; i++)
+        {
+            shift = Key[i % Key.Length] - 'a';
+            ciphertext += ShiftCharacter(plaintext[i], shift);
+        }
+
+        return ciphertext;
+    }
+
+    private char ShiftCharacter(char letter, int distance)
+    {
+        int baseIndex = (int)'a';
+        int startIndex = letter - 'a';
+        int shiftToIndex = (startIndex + distance) % 26;
+
+        if (shiftToIndex < 0) shiftToIndex = shiftToIndex + 26;
+
+        return (char)(baseIndex + shiftToIndex);
     }
 
     public string Decode(string ciphertext)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        string plaintext = "";
+        int shift;
+
+        for (int i = 0; i < ciphertext.Length; i++)
+        {
+            shift = Key[i % Key.Length] - 'a';
+            plaintext += ShiftCharacter(ciphertext[i], -1 * shift);
+        }
+
+        return plaintext;
     }
 }
