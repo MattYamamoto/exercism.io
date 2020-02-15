@@ -4,6 +4,7 @@ using System.Linq;
 
 public static class ResistorColor
 {
+
     public static IDictionary<string, int> colorValues = new Dictionary<string, int>
     {
           {"black"  , 0}
@@ -17,13 +18,9 @@ public static class ResistorColor
         , {"grey"   , 8}
         , {"white"  , 9}
     };
-    public static int ColorCode(string color)
-    {
-        return colorValues[color];
-    }
 
-    public static string[] Colors()
-    {
-        return colorValues.Keys.ToArray();
-    }
+    public static int ColorCode(string color) => colorValues[color];
+
+    public static string[] Colors() => colorValues.Keys.ToArray();
+
 }
