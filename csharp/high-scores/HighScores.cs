@@ -4,28 +4,16 @@ using System.Linq;
 
 public class HighScores
 {
-    public HighScores(List<int> list)
-    {
-        throw new NotImplementedException();
-    }
+    private List<int> scores;
 
-    public List<int> Scores()
-    {
-        throw new NotImplementedException();
-    }
+    public HighScores(List<int> list) => scores = list;
 
-    public int Latest()
-    {
-        throw new NotImplementedException();
-    }
+    public List<int> Scores() => scores;
 
-    public int PersonalBest()
-    {
-        throw new NotImplementedException();
-    }
+    public int Latest() => scores.Last();
+
+    public int PersonalBest() => scores.Max();
 
     public List<int> PersonalTopThree()
-    {
-        throw new NotImplementedException();
-    }
+        => scores.OrderByDescending(i => i).Take(3).ToList();
 }
