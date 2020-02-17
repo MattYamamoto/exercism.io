@@ -4,6 +4,17 @@ public static class Series
 {
     public static string[] Slices(string numbers, int sliceLength)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        if (sliceLength <= 0 || numbers.Length < sliceLength)
+        {
+            throw new ArgumentException();
+        }
+
+        string[] series = new string[numbers.Length - sliceLength + 1];
+        for (int i = 0; i <= numbers.Length - sliceLength; i++)
+        {
+            series[i] = numbers.Substring(i, sliceLength);
+        }
+
+        return series;
     }
 }
