@@ -24,20 +24,31 @@ public static class House
         StringBuilder sb = new StringBuilder();
 
         sb.Append("This is");
-
-        for (int i = verseNumber - 1; i >= 0; i--)
-        {
-            sb.Append(" the ");
-            sb.Append(phrases[i, 0]);
-            sb.Append(" that ");
-            sb.Append(phrases[i, 1]);
-        }
-
+        sb.Append(GetPhrase(verseNumber));
         sb.Append(".");
 
         string verse = sb.ToString();
 
         return verse;
+    }
+
+    public static string GetPhrase(int verseNumber)
+    {
+        int phraseIndex = verseNumber - 1;
+
+        if (phraseIndex < 0) return "";
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append(" the ");
+        sb.Append(phrases[phraseIndex, 0]);
+        sb.Append(" that ");
+        sb.Append(phrases[phraseIndex, 1]);
+        sb.Append(GetPhrase(verseNumber - 1));
+
+        string fullPhrase = sb.ToString();
+
+        return fullPhrase;
     }
 
     public static string Recite(int startVerse, int endVerse)
