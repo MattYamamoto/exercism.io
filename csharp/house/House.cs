@@ -46,17 +46,10 @@ public static class House
 
         for (int i = startVerse; i <= endVerse; i++)
         {
-            if (i == endVerse)
-            {
-                sb.Append(Recite(i));
-            }
-            else
-            {
-                sb.AppendLine(Recite(i));
-            }
+            sb.AppendLine(Recite(i));
         }
 
-        string fullRhyme = sb.ToString();
+        string fullRhyme = sb.ToString().TrimEnd();
 
         return fullRhyme;
     }
