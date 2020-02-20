@@ -1,21 +1,46 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 public static class NucleotideCount
 {
     public static IDictionary<char, int> Count(string sequence)
     {
-        Regex re = new Regex(@"[^ACGT]");
 
-        if (re.IsMatch(sequence)) throw new ArgumentException();
+        int countA = 0;
+        int countC = 0;
+        int countG = 0;
+        int countT = 0;
+
+        for (int i = 0; i < sequence.Length; i++)
+        {
+            switch (sequence.Substring(i, 1))
+            {
+                case "A":
+                    countA++;
+                    break;
+
+                case "C":
+                    countC++;
+                    break;
+
+                case "G":
+                    countG++;
+                    break;
+
+                case "T":
+                    countT++;
+                    break;
+
+                default:
+                    throw new ArgumentException();
+            }
+        }
 
         IDictionary<char, int> counts = new Dictionary<char, int>(){
-              {'A', sequence.Count(c => c == 'A')}
-            , {'C', sequence.Count(c => c == 'C')}
-            , {'G', sequence.Count(c => c == 'G')}
-            , {'T', sequence.Count(c => c == 'T')}
+              {'A', countA}
+            , {'C', countC}
+            , {'G', countG}
+            , {'T', countT}
         };
 
         return counts;
