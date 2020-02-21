@@ -7,26 +7,28 @@ public static class SumOfMultiples
     public static int Sum(IEnumerable<int> baseNumbers, int max)
     {
 
-        return baseNumbers
+        return (int)baseNumbers
             .SelectMany(n => allMultiples(n, max))
             .Distinct()
             .Sum();
     }
 
-    public static IEnumerable<int> allMultiples(int baseNumber, int max)
+    public static IEnumerable<long> allMultiples(int baseNumber, int max)
     {
-        IList<int> multiples = new List<int>();
+        IList<long> multiples = new List<long>();
 
         if (baseNumber == 0) return multiples;
 
+
         for (
-            int multiple = baseNumber;
+            long multiple = baseNumber;
             multiple < max;
             multiple += baseNumber
         )
         {
             multiples.Add(multiple);
         }
+
         return multiples;
     }
 }
