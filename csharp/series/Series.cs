@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public static class Series
 {
@@ -9,11 +10,11 @@ public static class Series
             throw new ArgumentException();
         }
 
-        string[] series = new string[numbers.Length - sliceLength + 1];
-        for (int i = 0; i <= numbers.Length - sliceLength; i++)
-        {
-            series[i] = numbers.Substring(i, sliceLength);
-        }
+        int totalSlices = numbers.Length - sliceLength + 1;
+
+        string[] series = Enumerable.Range(0, totalSlices)
+            .Select(sliceStart => numbers.Substring(sliceStart, sliceLength))
+            .ToArray();
 
         return series;
     }
