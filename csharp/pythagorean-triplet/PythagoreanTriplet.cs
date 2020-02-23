@@ -12,9 +12,9 @@ public static class PythagoreanTriplet
         int b;
         int c;
 
-        for (a = 1; a < sum / 2; a++)
+        for (a = 1; a < sum / 3; a++)
         {
-            for (b = a; b < sum / 2; b++)
+            for (b = a; b < sum - (a + b); b++)
             {
                 c = sum - (a + b);
 
@@ -23,7 +23,6 @@ public static class PythagoreanTriplet
                     triplets.Add((a, b, c));
                 }
             }
-
         }
 
         return triplets;
