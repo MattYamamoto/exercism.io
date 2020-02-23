@@ -11,23 +11,23 @@ public static class NucleotideCount
         int countG = 0;
         int countT = 0;
 
-        for (int i = 0; i < sequence.Length; i++)
+        for (int index = 0; index < sequence.Length; index++)
         {
-            switch (sequence.Substring(i, 1))
+            switch (sequence[index])
             {
-                case "A":
+                case 'A':
                     countA++;
                     break;
 
-                case "C":
+                case 'C':
                     countC++;
                     break;
 
-                case "G":
+                case 'G':
                     countG++;
                     break;
 
-                case "T":
+                case 'T':
                     countT++;
                     break;
 
