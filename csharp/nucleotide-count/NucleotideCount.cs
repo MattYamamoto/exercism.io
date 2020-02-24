@@ -6,42 +6,24 @@ public static class NucleotideCount
     public static IDictionary<char, int> Count(string sequence)
     {
 
-        int countA = 0;
-        int countC = 0;
-        int countG = 0;
-        int countT = 0;
+        IDictionary<char, int> counts = new Dictionary<char, int>(){
+              {'A', 0}
+            , {'C', 0}
+            , {'G', 0}
+            , {'T', 0}
+        };
 
-        for (int index = 0; index < sequence.Length; index++)
+        foreach (char nucleotide in sequence)
         {
-            switch (sequence[index])
+            if (counts.ContainsKey(nucleotide))
             {
-                case 'A':
-                    countA++;
-                    break;
-
-                case 'C':
-                    countC++;
-                    break;
-
-                case 'G':
-                    countG++;
-                    break;
-
-                case 'T':
-                    countT++;
-                    break;
-
-                default:
-                    throw new ArgumentException();
+                counts[nucleotide]++;
+            }
+            else
+            {
+                throw new ArgumentException();
             }
         }
-
-        IDictionary<char, int> counts = new Dictionary<char, int>(){
-              {'A', countA}
-            , {'C', countC}
-            , {'G', countG}
-            , {'T', countT}
-        };
 
         return counts;
     }
