@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 
 public class Robot
 {
@@ -25,7 +24,9 @@ public class Robot
     {
 
         int attempt = 0;
+        int maxNames = 26 * 26 * 1000;
         bool isUniqueName;
+
         string tryName = "";
         do
         {
@@ -34,9 +35,12 @@ public class Robot
 
             attempt++;
 
-        } while (attempt < 26 * 26 * 1000 && !isUniqueName);
+        } while (attempt < maxNames && !isUniqueName);
 
-        _name = tryName;
+        if (isUniqueName)
+        {
+            _name = tryName;
+        }
     }
 
     private string randomLetters(int numberOfLetters)
